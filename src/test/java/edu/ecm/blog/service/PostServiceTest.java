@@ -19,7 +19,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.ecm.blog.domain.Author;
 import edu.ecm.blog.domain.Post;
-import edu.ecm.blog.service.PostService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration

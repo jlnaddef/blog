@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
    http://www.springframework.org/schema/beans
-   classpath:org/springframework/beans/factory/xml/spring-beans-3.0.xsd" >
+   classpath:org/springframework/beans/factory/xml/spring-beans-3.0.xsd 
+   http://www.springframework.org/schema/tx
+   classpath:org/springframework/transaction/config/spring-tx-3.0.xsd">
 
 	<!-- factory bean pour la SessionFactory hibernate -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -21,7 +24,19 @@
 	   <property name="packagesToScan" value="edu.ecm.blog.domain"/>
 	</bean>
 	
-	<bean class="edu.ecm.blog.service.PostService" />
+	<!-- ajoute un gestionnaire de transactions lié à la sessionFactory -->
+<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+
+<!-- active le support des annotations @Transactional -->
+<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+
+	
+	<bean class="edu.ecm.blog.service.PostServiceImpl" />
+	
+	
 
 </beans>
 
