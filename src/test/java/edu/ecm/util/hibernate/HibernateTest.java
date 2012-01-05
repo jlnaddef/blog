@@ -15,8 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ecm.blog.Author;
-import edu.ecm.blog.Post;
+import edu.ecm.blog.domain.Author;
+import edu.ecm.blog.domain.Post;
 
 
 

@@ -1,4 +1,4 @@
-package edu.ecm.blog;
+package edu.ecm.blog.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

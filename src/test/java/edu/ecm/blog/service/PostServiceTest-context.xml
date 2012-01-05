@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans
+   classpath:org/springframework/beans/factory/xml/spring-beans-3.0.xsd" >
+
+	<!-- factory bean pour la SessionFactory hibernate -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	   <property name="hibernateProperties">
+	      <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	         <property name="properties">
+	            <props>
+	               <prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
+	               <prop key="hibernate.connection.url">jdbc:derby:target/testdb;create=true</prop>
+	               <prop key="hibernate.connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</prop>
+	               <prop key="hibernate.hbm2ddl.auto">update</prop>
+	            </props>
+	         </property>
+	      </bean>
+	   </property>
+	   <property name="packagesToScan" value="edu.ecm.blog.domain"/>
+	</bean>
+	
+	<bean class="edu.ecm.blog.service.PostService" />
+
+</beans>
+
