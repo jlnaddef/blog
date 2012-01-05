@@ -65,7 +65,7 @@ public class HibernateTest {
 		
 		query.setString("name", "Harpo Marx");
 		
-		List authors = query.list();
+		List<Author> authors = query.list();
 		
 		session.close();
 		
@@ -86,7 +86,7 @@ public class HibernateTest {
 
 	    criteria.add(Restrictions.eq("name", "Harpo Marx"));
 
-	    List authors = criteria.list();
+	    List<Author> authors = criteria.list();
 
 	    session.close();
 
