@@ -11,6 +11,8 @@
            <div id="header">
                <span class="title"><a href="/index">Mon blog</a></span>
            </div>
+           
+           
 
            <div id="form">
                <form:form commandName="post" action="/admin/post" method="post">
@@ -50,16 +52,14 @@
                <div class="tagcloud">
                    <span class="title">Les tags</span>
                    <ul>
-                       <li>tag 1</li>
-                       <li>tag 2</li>
+                       
                    </ul>
                </div>
 
                <div class="latest">
                    <span class="title">Les billets récents</span>
                    <ul>
-                       <li>Un post</li>
-                       <li>Un post</li>
+                       
                    </ul>
                </div>
            </div>
