@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- Support des annotations -->
+	<context:annotation-config />
+	<context:component-scan base-package="edu.ecm.blog.web.controller" />
+	<context:component-scan base-package="edu.ecm.blog.service" />
+
+	<!-- Création de composants classiques pour spring mvc -->
+	<mvc:annotation-driven />
+
+	<!-- Forwarde les demandes de fichiers statiques vers la servlet par défaut 
+		du conteneur -->
+	<mvc:default-servlet-handler />
+
+	<!-- Définition de la Locale pour les opération de formattage -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+		<property name="defaultLocale" value="fr_FR" />
+	</bean>
+
+	<!-- Configuration de la technologie de rendu -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- pool de connexion -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" value="jdbc:derby:target/blogdb;create=true" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+	</bean>
+
+	<!-- factory bean pour la SessionFactory hibernate -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<bean
+				class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+				<property name="properties">
+					<props>
+						<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
+						<prop key="hibernate.hbm2ddl.auto">update</prop>
+					</props>
+				</property>
+			</bean>
+		</property>
+		<property name="packagesToScan" value="edu.ecm.blog.domain" />
+	</bean>
+
+	<!-- ajoute un gestionnaire de transactions lié à la sessionFactory -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- active le support des annotations @Transactional -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>

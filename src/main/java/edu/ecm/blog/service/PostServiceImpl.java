@@ -8,10 +8,12 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.ecm.blog.domain.Post;
 
+@Service
 public class PostServiceImpl implements PostService {
 
 	@Inject
@@ -76,7 +78,28 @@ public class PostServiceImpl implements PostService {
 		return count.intValue();
 
 	}
-
+	
+	@Override
+	@Transactional
+	public Post findBySlug(String slug){
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(" from Post where slug = :slug");
+		query.setString("slug", slug);
+		return (Post) query.uniqueResult();
+		
+	}
+	
+	@Override
+	@Transactional
+	public Post findById(Long id){
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(" from Post where id = :id");
+		query.setLong("id", id);
+		return (Post) query.uniqueResult();
+		
+	}
+	
+	
 	
 
 }
