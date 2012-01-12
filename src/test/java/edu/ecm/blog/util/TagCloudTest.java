@@ -53,16 +53,48 @@ public class TagCloudTest {
 		Assert.assertTrue(tagCloud.contains("java"));
 	}
 	
-	/*@Test
+	@Test
 	public void top() {
 		TagCloud tagCloud = new TagCloud();
 		
 		tagCloud.add("java", "ruby", "python", "c#", "groovy");
-		tagCloud.top(3);
+		//tagCloud.top(3);
 		
-		Assert.assertEquals(3, tagCloud.size());
+		Assert.assertEquals(3, tagCloud.top(3).size());
 	}
-	*/
+	
+	
+	@Test
+	public void topTooFew() {
+	   TagCloud tagCloud = new TagCloud();
+
+	   tagCloud.add("java");
+	   
+
+	   Assert.assertEquals(1, tagCloud.top(3).size());
+	}
+
+	@Test
+	public void topNegative() {
+	   TagCloud tagCloud = new TagCloud();
+
+	   tagCloud.add("java");
+	   
+
+	   Assert.assertEquals(0, tagCloud.top(-2).size());
+	}
+	
+	
+	@Test
+	public void shuffle() {
+	   TagCloud tagCloud = new TagCloud();
+
+	   tagCloud.add("java", "ruby", "python", "c#", "groovy");
+	   tagCloud.shuffle();
+
+	   Assert.assertEquals(5, tagCloud.size());
+	   Assert.assertTrue(tagCloud.contains("java"));
+	}
 	
 
 }
