@@ -27,7 +27,7 @@ public class PostServiceImpl implements PostService {
 	public void save(Post post) {
 		Session session = sessionFactory.getCurrentSession();
 
-		session.save(post);
+		session.saveOrUpdate(post);
 
 	}
 

@@ -2,17 +2,19 @@
 body {
     width: 900px;
     margin: auto;
-    background-color: #ffffff;
+    background-color: #ffcccc;
     font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    background-image: url("arcenciel.gif");
 }
 
 p {
     margin: 0;
+    
 }
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: #ff33CC;
 }
 
 #header {
@@ -48,6 +50,47 @@ a {
     border: 1px #284B7E solid;
     background-color: white;
     box-shadow: 5px 5px #444;
+    background-image: url("bisou_bleu.gif");
+    background-repeat : no-repeat;
+    background-position : center;
+}
+
+#post {
+    float: left;
+    width: 687px;
+    height: 350px;
+    padding:5px;
+    border-right: 1px gray solid;
+    border-bottom-left-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+    border: 1px #284B7E solid;
+    background-color: white;
+    box-shadow: 5px 5px #444;
+    background-image: url("bisou_jaune.gif");
+    background-repeat : no-repeat;
+    background-position : center;
+}
+
+#posts_index {
+    float: left;
+    width: 687px;
+    padding:5px;
+    border-right: 1px gray solid;
+    border-bottom-left-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+    border: 1px #284B7E solid;
+    background-color: white;
+    box-shadow: 5px 5px #444;
+    background-image: url("bisou_orange.gif");
+    background-repeat : no-repeat;
+    background-position : right;
+}
+
+
+.admin {
+	position : relative;
+	top : 10px;
+	left: 70px;
 }
 
 .post {
@@ -120,4 +163,7 @@ a {
     border: 1px #284B7E solid;
     background-color: white;
     box-shadow: 5px 5px #444;
+    background-image: url("bisou_rose.gif");
+    background-repeat : no-repeat;
+    background-position : center;
 }

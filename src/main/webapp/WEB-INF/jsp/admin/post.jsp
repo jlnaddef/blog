@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="/css/style.css" type="text/css"
+<link rel="stylesheet" href="/css/style2.css" type="text/css"
 	media="screen" charset="utf-8">
 </head>
 <body>
@@ -12,7 +12,7 @@
 		<span class="title"><a href="/index">Mon blog</a></span>
 	</div>
 
-	<div id="posts">
+	<div id="post">
 		<div class="post">
 
 			
@@ -22,7 +22,7 @@
 			<span class="tags">Tags : ${post.tags }</span> <span class="author">Auteur : ${post.author}</span>
 			<br/>
 			<br/>
-			<span class="post"><a href="/admin/modify"> Modifier </a></span>
+			<span class="post"><a href="/admin/form/${post.id}"> Modifier </a></span>
 		</div>
 	</div>
 

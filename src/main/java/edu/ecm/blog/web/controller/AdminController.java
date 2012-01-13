@@ -77,7 +77,13 @@ public class AdminController {
 		return "redirect:/admin/posts";
 	}
 	
-	
+	@RequestMapping("/admin/form/{id}")
+	public String post2(@PathVariable Long id, Model model) {
+	    // on injecte le post
+	    model.addAttribute("post", postService.findById(id));
+
+	    return "admin/form";
+	}
 
 	
 

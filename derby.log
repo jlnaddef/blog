@@ -1,7 +1,13 @@
 ----------------------------------------------------------------
-Thu Jan 12 15:31:51 CET 2012:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0134-d254-f7f0-000004c40c00 
-on database directory /Users/jean-loup_naddef/projet/blog/blog/target/testdb  with class loader sun.misc.Launcher$AppClassLoader@1f3e8d89 
+Fri Jan 13 15:58:36 CET 2012:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0134-d793-d1c6-000004502810 
+on database directory /Users/jean-loup_naddef/projet/blog/blog/target/blogdb  with class loader WebappClassLoader
+  context: 
+  delegate: false
+  repositories:
+----------> Parent Classloader:
+ClassRealm[plugin>org.codehaus.mojo:tomcat-maven-plugin:1.1, parent: sun.misc.Launcher$AppClassLoader@5ab8df17]
+ 
 Loaded from file:/Users/jean-loup_naddef/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
 java.vendor=Apple Inc.
 java.runtime.version=1.6.0_29-b11-402-11M3527

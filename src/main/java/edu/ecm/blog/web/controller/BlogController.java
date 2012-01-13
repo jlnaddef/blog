@@ -35,14 +35,14 @@ public class BlogController {
 
 	@PostConstruct
 	public void bootstrap() {
-
+		if (postService.count() < 1) {
 			Post post = new Post();
 			post.setTitle("un post");
 			post.setDate(new Date());
 			post.setSlug("un-beau-slug");
 			post.setTags("tag1 tag2");
 			postService.save(post);
-
+		}
 		
 
 	}
